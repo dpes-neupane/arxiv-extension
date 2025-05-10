@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Archive",
+    "version": "1.0.0",
+    "description": "A brief description of your extension",
+
+    "action": {
+        "default_popup": "/popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [{
+        "matches": ["*://*.arxiv.org/abs/*", "*://*.arxiv.org/pdf/*"],
+        "js": ["content.js"]
+    }],
+    "host_permissions": [
+        "*://*.arxiv.org/*"
+    ],
+
+    "permissions": ["storage", "activeTab", "tabs"]
+}

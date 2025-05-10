@@ -1,0 +1,290 @@
+/* Base Styles */
+
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 12px;
+    min-width: 300px;
+    max-width: 500px;
+    color: #202124;
+    background-color: #ffffff;
+}
+
+
+/* Header Styles */
+
+h1 {
+    font-size: 18px;
+    color: #1a0dab;
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+h3 {
+    /* flex-grow: 1; */
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    min-width: 240px;
+}
+
+
+/* Status Indicator */
+
+#status {
+    font-size: 13px;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background-color: #f8f9fa;
+}
+
+#status[data-active="true"] {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+#status[data-active="false"] {
+    background-color: #fce8e6;
+    color: #d93025;
+}
+
+
+/* Buttons */
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 4px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1765cc;
+}
+
+button:disabled {
+    background-color: #9aa0a6;
+    cursor: not-allowed;
+}
+
+
+/* arXiv-Specific Action Button */
+
+#arxivActionBtn {
+    background-color: #b31b1b;
+    /* arXiv brand red */
+}
+
+#arxivActionBtn:hover:not(:disabled) {
+    background-color: #8c1515;
+}
+
+
+/* Toggle Switches */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #1a73e8;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+
+/* Settings Items */
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.setting-label {
+    flex-grow: 1;
+    font-size: 13px;
+}
+
+
+/* Footer */
+
+.footer {
+    margin-top: 16px;
+    font-size: 11px;
+    color: #5f6368;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 8px;
+}
+
+
+/* Add these to your existing popup.css */
+
+.section {
+    margin-top: 16px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+}
+
+.section h2 {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #5f6368;
+}
+
+#arxivTabsList {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#arxivTabsList li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-direction: row-reverse;
+}
+
+#arxivTabsList li.active {
+    font-weight: bold;
+}
+
+#arxivTabsList li a {
+    color: #1a0dab;
+    text-decoration: none;
+    text-wrap: wrap;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#arxivTabsList li a:hover {
+    text-decoration: underline;
+}
+
+#arxivTabsList .no-tabs {
+    color: #5f6368;
+    font-style: italic;
+    padding: 8px 0;
+}
+
+.bibtexButton {
+    background: rgb(6, 119, 218);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s;
+    width: 75px;
+}
+
+.bibtexButton:hover:hover {
+    opacity: 1;
+    background-color: #f5f5f5;
+    color: rgb(6, 119, 218);
+}
+
+.paperCB {
+    margin-right: 8px;
+}
+
+#refreshTabs {
+    width: auto;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    background-color: #f1f1f1;
+    color: #202124;
+}
+
+#refreshTabs:hover {
+    background-color: #e0e0e0;
+}
+
+.download-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #b31b1b;
+    /* arXiv red */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.download-btn:disabled {
+    background-color: #cccccc;
+    /* Changes button color to light gray */
+    cursor: not-allowed;
+    /* Shows a "not allowed" icon (🚫) on hover */
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #242527;
+        color: #e8eaed;
+    }
+    h1 {
+        color: #137333;
+    }
+    #status {
+        color: #202124;
+    }
+    #arxivTabsList li a {
+        color: #e8eaed;
+        text-wrap: wrap;
+    }
+    /* Additional dark mode styles */
+}
