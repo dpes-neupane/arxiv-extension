@@ -22,7 +22,7 @@ if (window.location.hostname.includes('arxiv.org')) {
             for (i = 0; i < authors.length; i++) {
                 auths.push(authors[i].innerText);
             }
-            console.log(auths);
+            // console.log(auths);
         }
         if (abstract) {
 
