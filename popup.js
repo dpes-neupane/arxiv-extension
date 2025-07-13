@@ -55,9 +55,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   function parseArxivXml(xmlString) {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-
+    // console.log(xmlString);
+    // console.log(xmlDoc);
     // Handle potential parsing errors
     const parserError = xmlDoc.getElementsByTagName("parsererror");
+    console.log(parserError);
     if (parserError.length > 0) {
       throw new Error("Failed to parse XML: " + parserError[0].textContent);
     }
@@ -142,8 +144,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function getPaperById(tabData) {
     // Remove version number if present (e.g., 1234.5678v3 → 1234.5678)
-    var xmlData = tabData["xmldata"]["response"];
-    var bibtexData = tabData["xmldata"]["bibtex"];
+    var xmlData = tabData["xmldata"];
+    var bibtexData = tabData["bibtex"];
     const papers = parseArxivXml(xmlData);
     if (papers.length > 0) {
       return {

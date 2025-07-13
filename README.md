@@ -19,5 +19,5 @@ Not for commercial use.
 
 Additionally, you can use the bibtex citation directly for the relevant paper. 
 
-Heavy use of LLMs to build this extension. 
+ 
 

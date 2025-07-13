@@ -33,20 +33,21 @@ function loadURL(url) {
 function updateTabStatus(tab) {
     if (isArXivUrl(tab.url)) {
         arxivId = loadURL(tab.url);
+        // console.log(tab.xmlData);
         if (!tab.xmlData) {
-            var paperInfo = {};
             getPaperById(arxivId).then(result => {
-                paperInfo['response'] = result['response'];
-                paperInfo['bibtex'] = result['bibtex'];
-            });
-            // console.log(paperInfo);
-            arxivTabs.set(tab.id, {
-                url: tab.url,
-                title: tab.title,
-                xmldata: paperInfo,
+
+
+
+
+                arxivTabs.set(tab.id, {
+                    url: tab.url,
+                    title: tab.title,
+                    xmldata: result['response'],
+                    bibtex: result['bibtex'],
+                });
             });
         }
-
         // chrome.action.enable(tab.id);
     } else {
         arxivTabs.delete(tab.id);
@@ -93,6 +94,7 @@ async function getPaperById(arxivId) {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.url || changeInfo.status === "complete") {
         updateTabStatus(tab);
+
     }
 });
 
@@ -105,6 +107,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "getArXivTabs") {
         chrome.windows.getAll({ populate: true }, (windows) => {
             const allTabs = windows.flatMap((w) => w.tabs);
+            console.log(Array.from(arxivTabs.entries()));
             const arxivTabData = Array.from(arxivTabs.entries()).map(
                 ([tabId, data]) => ({
                     tabId,
@@ -113,7 +116,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 })
             );
             sendResponse({ arxivTabs: arxivTabData });
-            // console.log(arxivTabData);
+
+            console.log("allTabs", arxivTabs);
+            console.log("data", arxivTabData);
         });
         return true; // Keep message channel open for async response
     }
